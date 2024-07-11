@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Tutor Prototype</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-atom-dark.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<body class="dark:bg-slate-800 dark:text-white">
+  <!-- add a new div which will hold 3 buttons horizontally. JS handles the modal at the bottom of the file -->
+  <div id="promo-links" class="flex-row justicy-center text-center py-8">
+    <button id="codedownload" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded m-1">Download this webapp</button>
+    <button id="echohive" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-1" onclick="window.open('https://www.echohive.live', '_blank')">Learn AI</button>
+    <button id="autostreamer" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded m-1" onclick="window.open('https://www.autostreamer.live', '_blank')">Auto Streamer</button>
+  </div>
+  <div class="flex-row justicy-center text-center py-0 sm:py-5">
+    
+    <h1 class="text-4xl font-bold mb-5">Welcome to Python Tutor</h1>
+    <hr style="border: 1px solid #707070; width: 60%; margin: 20px auto;"> <!-- Stylish horizontal line -->
+    <h2 class="text-2xl font-bold mb-5">Please select your level</h2>
+    
+      <div class="inline-block">
+        <button id="nooblet" class="bg-gray-700 hover:bg-green-600 hover:animate-pulse active:bg-green-400 text-white font-bold py-2 px-4 rounded m-1">Nooblet</button>
+        <button id="trendie" class="bg-gray-700 hover:bg-yellow-600 hover:animate-pulse active:bg-yellow-400 text-white font-bold py-2 px-4 rounded m-1">Trendie</button>
+        <button id="elite" class="bg-gray-700 hover:bg-cyan-600 hover:animate-pulse active:bg-cyan-400 text-white font-bold py-2 px-4 rounded m-1">Elite</button>
+        <!-- number input filed -->
+        <input type="number" id="number" class="bg-gray-700 hover:bg-cyan-600 hover:animate-pulse active:bg-cyan-400 text-white font-bold py-2 px-4 w-20 rounded m-1" placeholder="50" title="This is the max words for GPT response. lower is shorter responses" value="50">
+      </div>
+      <div id="spinner" class="flex-col justify-center items-center mt-10" style="display: none;">
+        <div class="w-12 h-12 rounded-full animate-spin border-y-8 border-solid border-yellow-500 border-t-transparent"></div>
+        generating topics
+      </div>
+      
+  <div id="topics" class="mt-5"></div>
+  <button id="refresh" class="bg-green-700 hover:bg-yellow-600 hover:animate-pulse active:bg-blue-400 text-white font-bold py-2 px-4 rounded m-1 block mx-auto" style="display: none;">
+    REFRESH TOPICS
+  </button>
+
+  <div id="explanations" class="mt-5 mx-auto w-11/12 sm:w-3/6 text-left"></div>
+</body>
+
+
+
+<!-- add a black and transparent div which is 10 pixels high just for some buffer at the bottom -->
+<div class="bg-black bg-opacity-0 h-9"></div>
+
+<footer class="fixed bottom-0 w-full bg-gray-800 bg-opacity-80">
+  <div class="container mx-auto py-4 text-center">
+    <span class="inline-flex justify-center w-full">
+      <a class="social_icons_ds mr-10 hover:scale-110 transition-transform duration-300" href="https://discord.gg/WpJpyTK7NF" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a class="social_icons_ds mr-10 hover:scale-110 transition-transform duration-300" href="https://www.youtube.com/@echohive" target="_blank" rel="noopener noreferrer">Youtube</a>
+      <a class="social_icons_ds mr-10 hover:scale-110 transition-transform duration-300" href="https://twitter.com/hive_echo" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a class="social_icons_ds mr-10 hover:scale-110 transition-transform duration-300" href="https://github.com/echohive42" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+<!-- modal here -->
+<div id="modal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 bg-yellow-900 bg-opacity-90 transition-opacity" aria-hidden="true"></div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    <div class="inline-block align-bottom bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+              Download Webapp
+            </h3>
+            <div class="mt-2">
+              <p class="text-sm text-gray-300">
+                You can download the webapp and run it locally on your computer or deploy it yourself on a server.
+                Code is available for my Patreon members. You will have access to 200+ project files when you join my Patreon.
+                if you have any questions ask me on <a href="https://www.twitter.com/@hive_echo" target="_blank" class="font-bold text-green-500">Twitter</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-700 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="window.open('https://your-download-link.com', '_blank')">
+          Download
+        </button>
+        <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-gray-200 text-base font-medium text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('modal').classList.add('hidden')">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const buttons = ["nooblet", "trendie", "elite"];
+  const topicsDiv = document.getElementById("topics");
+  const spinner = document.getElementById("spinner");
+  const refreshButton = document.getElementById("refresh");
+
+  let explanationsDiv = document.getElementById("explanations");
+  let current_level = "";
+  let previous_topics = [];
+  
+  buttons.forEach(buttonId => {
+  const button = document.getElementById(buttonId);
+  button.addEventListener("click", async () => {
+    // Remove 'active' class from all buttons
+    buttons.forEach(id => {
+      const otherButton = document.getElementById(id);
+      otherButton.classList.remove('bg-black'); // Remove active state
+      otherButton.classList.add('bg-gray-700'); // Add inactive state
+    });
+
+    // Add 'active' class to the clicked button
+    button.classList.remove('bg-gray-700'); // Remove inactive state
+    button.classList.add('bg-black'); // Add active state
+
+    current_level = button.textContent;
+    refreshButton.style.display = "none"; // Hide refresh button
+    previous_topics = []; // clear previous topics when a new level is selected
+    await fetchAndDisplayTopics();
+    refreshButton.style.display = "flex"; // Show refresh button
+  });
+});
+
+  function create_topic_buttons(data) {
+    // loop over topics and pick the same index from topic_colours and create the buttons with their respective colours
+    data.topics.forEach((topic, index) => {
+      topic_colours = ["bg-red-600", "bg-orange-600", "bg-yellow-600", "bg-green-600", "bg-blue-600"];
+      const topicButton = document.createElement("button");
+      topicButton.addEventListener('click', () => {
+        let number_of_words = parseInt(document.getElementById("number").value);
+        // Clear the explanations div and create a new paragraph for the new topic
+        explanationsDiv.innerHTML = "";
+        explanationParagraph = explanationsDiv.appendChild(document.createElement("p"));
+
+        // Remove 'active' class from all topic buttons
+        data.topics.forEach((_, i) => {
+          const otherButton = topicsDiv.children[i];
+          otherButton.classList.remove('bg-black'); // Remove active state
+          otherButton.classList.add('bg-gray-700'); // Add inactive state
+        });
+
+        // Add 'active' class to the clicked topic button
+        topicButton.classList.remove('bg-gray-700'); // Remove inactive state
+        topicButton.classList.add('bg-black'); // Add active state
+
+        // Send the topic data to the server via WebSocket
+        socket.send(JSON.stringify({ topic: topic, previous_topics, number_of_words}));
+      });
+      topicButton.textContent = topic;
+      topicButton.className = `bg-gray-700 hover:${topic_colours[index]} hover:animate-pulse active:${topic_colours[index]} text-white font-bold py-2 px-4 rounded m-1`;
+      topicsDiv.appendChild(topicButton);
+      previous_topics.push(topic); // add the topic to the list of previous topics
+    });
+  }
+  
+  async function fetchAndDisplayTopics() {
+    // clear previous explanations
+    explanationsDiv.innerHTML = "";
+    refreshButton.style.display = "none"; // Hide refresh button
+    // clear previous topics
+    topicsDiv.innerHTML = "";
+    spinner.style.display = "flex"; // Show spinner
+    const response = await fetch("/get-topics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ text: current_level, previous_topics })
+    });
+
+    const data = await response.json();
+    refreshButton.style.display = "flex"; // Show refresh button
+
+    spinner.style.display = "none"; // Hide spinner
+    // loop over topics and pick the same index from topic_colours and create the buttons with their respective colours
+    create_topic_buttons(data);
+  }
+
+
+
+  // Add event listener to the refresh button
+  refreshButton.addEventListener("click", fetchAndDisplayTopics);
+
+  // Create a WebSocket connection
+  const wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+  const wsUrl = wsProtocol + window.location.host + "/ws";
+  let socket;
+
+function initializeWebSocket() {
+  socket = new WebSocket(wsUrl);
+
+  socket.onclose = function(event) {
+    console.log('WebSocket is closed. Reconnect will be attempted in 1 second.', event.reason);
+    setTimeout(function() {
+      initializeWebSocket();
+    }, 1000);
+  };
+
+  socket.onerror = function(err) {
+    console.error('WebSocket encountered error: ', err.message, 'Closing socket');
+    socket.close();
+  };
+}
+
+initializeWebSocket();
+
+// Create a paragraph element to display the explanations
+let explanationParagraph = explanationsDiv.appendChild(document.createElement("p"));
+
+// Buffer to keep track of the last few tokens
+let buffer = [];
+// Buffer to store code block content
+let codeBuffer = [];
+// Flag to indicate whether we're currently inside a code block
+let insideCodeBlock = false;
+// Counter variable to keep track of the number of messages
+let messageCounter = 0;
+
+// Listen for messages from the server
+socket.onmessage = function(event) {
+  // Get the received data
+  const token = JSON.parse(event.data).data;
+  
+
+  // Check if the user is at the bottom of the page
+  const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+  // Add the token to the buffer
+  buffer.push(token);
+  // If the buffer is too large, remove the oldest token
+  if (buffer.length > 3) {
+    buffer.shift();
+    // console.log(buffer);
+  }
+
+  // Check if the last three tokens in the buffer form the start of a code block
+  if (buffer.join('').includes('```python')) {
+    console.log('Code block detected');
+    
+    // Start of a code block detected, clear the buffer and set the flag
+    buffer = [];
+    insideCodeBlock = true;
+
+    // Create a new Prism code block
+    codeBlock = document.createElement('pre');
+    codeBlock.className = 'language-python rounded mb-20';
+    explanationsDiv.appendChild(codeBlock);
+  } else if (buffer.join('').includes('```') && insideCodeBlock) {
+    console.log('End of code block detected');
+    // End of a code block detected, clear the buffer and unset the flag
+    buffer = [];
+    insideCodeBlock = false;
+
+    // Highlight the code block
+    Prism.highlightElement(codeBlock);
+
+    // Create a new paragraph for the next text
+    explanationParagraph = explanationsDiv.appendChild(document.createElement("p"));
+  } else if (insideCodeBlock) {
+    // If we're inside a code block, add the token to the code buffer
+    codeBlock.innerHTML += `<code class="language-python">${token}</code>`;
+  } else {
+    // If we're not inside a code block, add the token as regular text
+    explanationParagraph.innerHTML += token;
+  }
+  
+
+  // scroll by 5 pixel for the first 50 messages
+  if (messageCounter < 50) {
+    window.scrollBy(0, 5);
+    messageCounter++;
+    // console.log(messageCounter);
+  }
+};
+
+// below is the promo links code
+
+  // Get the buttons
+  const codedownloadButton = document.getElementById("codedownload");
+  const echohiveButton = document.getElementById("echohive");
+  const autostreamerButton = document.getElementById("autostreamer");
+
+  // Add event listeners
+  codedownloadButton.addEventListener("click", function() {
+    document.getElementById('modal').classList.remove('hidden');
+  });
+
+</script>
+</html>
