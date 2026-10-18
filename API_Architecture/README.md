@@ -32,3 +32,6 @@ Asynchronous Architecture
 Synchronous Architecture Vs Asynchronous Architecture
 
 <img width="1029" height="566" alt="Screenshot 2026-10-18 at 3 54 43 PM" src="https://github.com/user-attachments/assets/abf00d4e-eb4b-42ce-8506-d42b6b91ab20" />
+
+
+<img width="992" height="546" alt="Screenshot 2026-10-18 at 3 58 56 PM" src="https://github.com/user-attachments/assets/506e3927-0241-48c8-8040-ed0ce1b58f6d" />
