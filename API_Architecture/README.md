@@ -14,3 +14,21 @@
 <img width="1022" height="462" alt="Screenshot 2026-10-18 at 2 15 22 PM" src="https://github.com/user-attachments/assets/1aad3335-dd6d-43f0-bd16-26759536dac3" />
 
 <img width="1004" height="525" alt="Screenshot 2026-10-18 at 2 20 00 PM" src="https://github.com/user-attachments/assets/bfe27195-7122-4b22-92fc-63692b5b2b1b" />
+
+<img width="1000" height="549" alt="Screenshot 2026-10-18 at 3 23 15 PM" src="https://github.com/user-attachments/assets/e3c29b4f-6726-4cb8-b79e-e90db7bcce0a" />
+
+
+<img width="1025" height="563" alt="Screenshot 2026-10-18 at 3 35 42 PM" src="https://github.com/user-attachments/assets/a4eaac74-539b-494c-bf64-5ed5a329842b" />
+
+Synchronous Architecture 
+
+<img width="992" height="574" alt="Screenshot 2026-10-18 at 3 46 29 PM" src="https://github.com/user-attachments/assets/e38ee8ff-9560-4943-a759-e929fa28a6bb" />
+
+Asynchronous Architecture
+
+<img width="973" height="537" alt="Screenshot 2026-10-18 at 3 50 27 PM" src="https://github.com/user-attachments/assets/192b0e48-673e-4de2-ab5e-4be5da5f9f97" />
+
+
+Synchronous Architecture Vs Asynchronous Architecture
+
+<img width="1029" height="566" alt="Screenshot 2026-10-18 at 3 54 43 PM" src="https://github.com/user-attachments/assets/abf00d4e-eb4b-42ce-8506-d42b6b91ab20" />
