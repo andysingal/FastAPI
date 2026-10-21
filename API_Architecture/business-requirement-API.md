@@ -18,3 +18,12 @@ Business Action Thinking
 
 
 <img width="1021" height="604" alt="Screenshot 2026-10-21 at 3 36 29 PM" src="https://github.com/user-attachments/assets/67fa0660-43e2-4b77-a942-2a313e200f09" />
+
+Valid API resources can be:
+
+- computed
+- temporary
+- aggregated
+- business-facing abstractions 
+
+<img width="1010" height="580" alt="Screenshot 2026-10-21 at 3 39 16 PM" src="https://github.com/user-attachments/assets/fff74b82-c1e4-44cc-bb8f-be70b8bbc984" />
