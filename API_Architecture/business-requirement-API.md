@@ -15,3 +15,6 @@
 Business Action Thinking
 
 <img width="1014" height="575" alt="Screenshot 2026-10-21 at 3 33 17 PM" src="https://github.com/user-attachments/assets/6f20cda7-9939-4aeb-873d-1d74de95f242" />
+
+
+<img width="1021" height="604" alt="Screenshot 2026-10-21 at 3 36 29 PM" src="https://github.com/user-attachments/assets/67fa0660-43e2-4b77-a942-2a313e200f09" />
