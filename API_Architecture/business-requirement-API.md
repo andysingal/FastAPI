@@ -27,3 +27,9 @@ Valid API resources can be:
 - business-facing abstractions 
 
 <img width="1010" height="580" alt="Screenshot 2026-10-21 at 3 39 16 PM" src="https://github.com/user-attachments/assets/fff74b82-c1e4-44cc-bb8f-be70b8bbc984" />
+
+
+<img width="1008" height="580" alt="Screenshot 2026-10-27 at 8 52 39 PM" src="https://github.com/user-attachments/assets/01580637-c238-4adb-a40c-a5ecb0fe8467" />
+
+
+
