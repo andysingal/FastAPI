@@ -32,4 +32,12 @@ Valid API resources can be:
 <img width="1008" height="580" alt="Screenshot 2026-10-27 at 8 52 39 PM" src="https://github.com/user-attachments/assets/01580637-c238-4adb-a40c-a5ecb0fe8467" />
 
 
+<img width="1041" height="539" alt="Screenshot 2026-10-27 at 9 02 17 PM" src="https://github.com/user-attachments/assets/f84c49d4-81d7-42e5-825f-1faf3548c26a" />
 
+<img width="1031" height="547" alt="Screenshot 2026-10-27 at 9 06 15 PM" src="https://github.com/user-attachments/assets/1afbf6d5-e442-4d7b-9ff1-2c0334d77eee" />
+
+
+<img width="1041" height="570" alt="Screenshot 2026-10-27 at 9 08 59 PM" src="https://github.com/user-attachments/assets/1fa7e52d-e19a-4433-bfaf-292a9fd8cf8e" />
+
+
+<img width="1039" height="594" alt="Screenshot 2026-10-27 at 9 14 04 PM" src="https://github.com/user-attachments/assets/0ff31b91-9372-4c8a-a29f-b53b8a2a256e" />
