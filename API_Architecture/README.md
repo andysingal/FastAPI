@@ -35,3 +35,12 @@ Synchronous Architecture Vs Asynchronous Architecture
 
 
 <img width="992" height="546" alt="Screenshot 2026-10-18 at 3 58 56 PM" src="https://github.com/user-attachments/assets/506e3927-0241-48c8-8040-ed0ce1b58f6d" />
+
+
+## Client Errors ... Fix the REquest, Not the Server
+
+<img width="917" height="505" alt="Screenshot 2026-10-29 at 3 54 44 PM" src="https://github.com/user-attachments/assets/0e79a4ed-e1e8-492a-a54e-99bea08deb30" />
+
+## Design for Consumer Automation
+
+<img width="919" height="504" alt="Screenshot 2026-10-29 at 4 03 13 PM" src="https://github.com/user-attachments/assets/db943752-a4ed-464f-aa3a-c7228bfb29c2" />
