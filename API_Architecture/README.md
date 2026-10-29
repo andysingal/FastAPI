@@ -44,3 +44,9 @@ Synchronous Architecture Vs Asynchronous Architecture
 ## Design for Consumer Automation
 
 <img width="919" height="504" alt="Screenshot 2026-10-29 at 4 03 13 PM" src="https://github.com/user-attachments/assets/db943752-a4ed-464f-aa3a-c7228bfb29c2" />
+
+
+#### Payload Ergonomics 
+
+<img width="896" height="504" alt="Screenshot 2026-10-29 at 8 09 35 PM" src="https://github.com/user-attachments/assets/6756345e-dfb2-4e9a-8130-4589cb124b8f" />
+
